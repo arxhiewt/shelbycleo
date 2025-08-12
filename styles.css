@@ -1,1 +1,111 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#ffd166;
+  --muted:#9aa7b2;
+  --glass: rgba(255,255,255,0.03);
+  --glass-2: rgba(255,255,255,0.02);
+  --shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --radius:14px;
+  --glass-border: rgba(255,255,255,0.03);
+  --success: #8ae598;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
 
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg, #07101a 0%, #0f1724 100%);
+  color: #e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding:18px;
+}
+
+.app{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:18px;min-height:90vh}
+
+/* Header */
+.header{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:56px;height:56px;background:linear-gradient(135deg,#fff0d1,#ffd4a3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#102a43}
+.brand h1{margin:0;font-size:18px;letter-spacing:-0.2px}
+.brand p.sub{margin:0;color:var(--muted);font-size:12px}
+
+.nav{display:flex;gap:8px}
+.tab-btn{
+  background:transparent;border:1px solid transparent;padding:8px 14px;border-radius:10px;color:var(--muted);cursor:pointer;font-weight:600;
+  transition: all .18s ease;
+}
+.tab-btn.active{background:var(--glass);border-color:var(--glass-border);color:#fff;box-shadow:var(--shadow)}
+.tab-btn:hover{transform:translateY(-2px);color:#fff}
+
+.balance{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.balance-label{font-size:11px;color:var(--muted)}
+.meow-display{font-weight:800;font-size:20px;color:var(--accent)}
+
+/* Main */
+.main{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:18px;border-radius:16px;box-shadow:var(--shadow)}
+.tab{display:none}
+.tab.active{display:block}
+
+/* Play grid */
+.play-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.click-box-wrap{display:flex;flex-direction:column;gap:12px}
+.click-box{
+  height:320px;border-radius:16px;background:linear-gradient(180deg,#0a1b2b,#07202b);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;box-shadow: inset 0 -6px 18px rgba(0,0,0,0.5);
+  transition: transform .08s ease;
+}
+.click-box:active{transform:scale(0.995)}
+.click-box .nose{font-size:48px;filter:drop-shadow(0 6px 10px rgba(0,0,0,0.4))}
+.click-box .eye{width:12px;height:12px;background:#fff;border-radius:50%;position:absolute;top:20%}
+.eye.left{left:28%}
+.eye.right{right:28%}
+.click-box .meow-hint{position:absolute;bottom:12px;color:var(--muted);font-size:13px}
+
+.controls{display:flex;gap:12px;color:var(--muted);font-size:13px;align-items:center}
+
+/* Sidebar cards */
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:12px;border:1px solid var(--glass-border)}
+.card.small{padding:10px}
+.sidebar{display:flex;flex-direction:column;gap:12px}
+
+.shop-grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
+.shop-items{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.shop-item{padding:12px;border-radius:10px;background:var(--glass-2);border:1px solid rgba(255,255,255,0.02)}
+.shop-item h4{margin:0;margin-bottom:6px}
+.shop-item .price{color:var(--muted);font-size:13px;margin-bottom:8px}
+.buy-btn{background:linear-gradient(90deg,#ffd166,#fca311);border:none;padding:8px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+.btn{background:linear-gradient(90deg,#ffd166,#fca311);border:none;padding:8px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:8px;cursor:pointer;color:var(--muted)}
+.muted{color:var(--muted);font-size:13px}
+
+/* Casino */
+.casino-card{padding:18px}
+.casino-controls{display:flex;gap:12px;align-items:center;margin-top:10px}
+.casino-controls input[type="number"]{width:110px;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit}
+.casino-log{height:160px;overflow:auto;margin-top:12px;border-radius:8px;padding:8px;background:rgba(0,0,0,0.12)}
+
+/* Stats */
+.stats-grid{display:flex;gap:12px;margin-top:12px}
+.stat{flex:1;background:var(--glass-2);padding:12px;border-radius:10px;text-align:center}
+.stat .num{font-weight:800;font-size:22px}
+.label{color:var(--muted);font-size:13px}
+
+/* Footer */
+.footer{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;padding:8px}
+
+/* Responsive */
+@media (max-width:900px){
+  .play-grid, .shop-grid{grid-template-columns:1fr}
+  .sidebar{order:2}
+  .header{flex-direction:column;align-items:flex-start;gap:12px}
+  .nav{width:100%;overflow:auto}
+  .brand h1{font-size:16px}
+  .meow-display{font-size:18px}
+}
